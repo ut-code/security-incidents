@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { runCommand } from "../lib/command";
 import { useGame } from "../lib/GameContext";
 import { CommandCode } from "./CommandCode";
@@ -8,12 +8,19 @@ export function Terminal() {
   const [input, setInput] = useState("");
   const [inputScroll, setInputScroll] = useState(0);
   const [lines, setLines] = useState<string[]>([]);
+  const terminalBodyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const terminalBody = terminalBodyRef.current;
+    if (terminalBody) terminalBody.scrollTop = terminalBody.scrollHeight;
+  }, [lines]);
+
   const execute = (raw = input) => {
     const result = runCommand(raw, state);
     result.state.history = [...state.history, raw];
     dispatch({ type: "COMMAND", state: result.state });
     if (raw.trim() === "clear") setLines([]);
-    else setLines((current) => [...current, `$ ${raw}`, result.output].filter(Boolean).slice(-14));
+    else setLines((current) => [...current, `$ ${raw}`, result.output].filter(Boolean));
     setInput("");
   };
 
@@ -25,8 +32,9 @@ export function Terminal() {
         <span>03:11:{String(50 + Math.floor(state.clock)).slice(-2)}</span>
       </div>
       <div
-        className="flex min-h-0 flex-1 flex-col overflow-hidden p-4 font-mono text-[13px] leading-[1.65] text-slate-200"
+        className="flex min-h-0 flex-1 flex-col overflow-y-auto p-4 font-mono text-[13px] leading-[1.65] text-slate-200"
         aria-live="polite"
+        ref={terminalBodyRef}
       >
         {lines.map((line, index) => (
           <pre
