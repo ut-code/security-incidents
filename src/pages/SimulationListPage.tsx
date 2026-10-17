@@ -13,32 +13,38 @@ const simulations = [
 export function SimulationListPage() {
   const { dispatch } = useGame();
   return (
-    <main className="hero">
-      <div className="brand">
-        KOMABA MARKET <span>SECURITY LAB / 01</span>
+    <main className="flex h-screen flex-col overflow-hidden bg-[#07111c] px-6 py-6 text-slate-100 md:px-12">
+      <div className="font-mono text-sm font-medium tracking-[0.11em] text-slate-100">
+        KOMABA MARKET <span className="ml-3 text-[10px] text-slate-500">SECURITY LAB / 01</span>
       </div>
       <Link
-        className="mt-6 inline-block w-fit text-sm text-slate-400 underline underline-offset-4 hover:text-white"
+        className="mt-4 inline-block w-fit text-sm text-slate-400 underline underline-offset-4 hover:text-white"
         to="/"
       >
         ← ホームへ戻る
       </Link>
-      <div className="heroBody">
-        <div className="eyebrow">INCIDENT RESPONSE SIMULATION</div>
-        <h1>
+      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center py-5">
+        <div className="font-mono text-[11px] uppercase tracking-[0.11em] text-lime-300">
+          INCIDENT RESPONSE SIMULATION
+        </div>
+        <h1 className="my-4 text-5xl font-black leading-tight tracking-[-0.06em] text-white sm:text-6xl">
           そのログに、
           <br />
           <em>気づけるか。</em>
         </h1>
-        <p>シミュレーションを選び、攻撃または防御の視点からインシデントを体験します。</p>
-        <div className="mt-8 grid gap-4">
+        <p className="m-0 max-w-xl text-sm leading-7 text-slate-300">
+          シミュレーションを選び、攻撃または防御の視点からインシデントを体験します。
+        </p>
+        <div className="mt-4 grid gap-3">
           {simulations.map((simulation, index) => (
             <article
-              className="rounded border border-slate-700 bg-slate-900/80 p-5"
+              className="rounded border border-slate-700 bg-slate-900/80 p-4 sm:p-5"
               key={simulation.id}
             >
-              <div className="eyebrow">SIMULATION {index + 1}</div>
-              <h2 className="my-2 text-xl font-semibold">{simulation.title}</h2>
+              <div className="font-mono text-[11px] tracking-[0.11em] text-lime-300">
+                SIMULATION {index + 1}
+              </div>
+              <h2 className="my-2 text-xl font-semibold text-white">{simulation.title}</h2>
               <p className="m-0 text-sm leading-6 text-slate-300">{simulation.summary}</p>
               <div className="mt-4 grid grid-cols-2 gap-3">
                 <button
@@ -62,7 +68,9 @@ export function SimulationListPage() {
           ))}
         </div>
       </div>
-      <footer>TRAINING SIMULATION · NO REAL NETWORK ACTIVITY</footer>
+      <footer className="mt-auto border-t border-white/10 pt-4 font-mono text-[10px] tracking-[0.11em] text-slate-500">
+        TRAINING SIMULATION · NO REAL NETWORK ACTIVITY
+      </footer>
       <SafetyNotice />
     </main>
   );

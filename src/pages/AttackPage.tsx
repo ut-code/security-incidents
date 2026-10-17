@@ -6,14 +6,17 @@ import { useGame } from "../lib/GameContext";
 export function AttackPage() {
   const { state } = useGame();
   return (
-    <main className="shell attackScreen h-screen max-w-none overflow-hidden p-4 md:p-8">
-      <div className="grid h-[calc(100%-4rem)] min-h-0 grid-cols-[minmax(260px,0.36fr)_minmax(0,0.64fr)] items-stretch gap-4 max-[760px]:grid-cols-1">
+    <main className="flex h-screen max-h-screen flex-col gap-2 overflow-hidden bg-[#07111c] p-4 text-slate-100 md:p-6">
+      <div className="grid min-h-0 flex-1 grid-cols-[minmax(260px,0.36fr)_minmax(0,0.64fr)] items-stretch gap-4 max-[760px]:grid-cols-1">
         <InstructionPanel />
         <Terminal />
       </div>
-      <div className="attackBottom">
+      <div className="flex shrink-0 items-center py-1 font-mono text-xs text-slate-500">
         <div>
-          VIRTUAL TIME <b>03:11:{String(50 + Math.floor(state.clock)).slice(-2)}</b>
+          VIRTUAL TIME{" "}
+          <b className="ml-2 text-slate-200">
+            03:11:{String(50 + Math.floor(state.clock)).slice(-2)}
+          </b>
         </div>
       </div>
       <SafetyNotice />

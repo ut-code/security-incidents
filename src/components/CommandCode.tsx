@@ -4,13 +4,13 @@ const tokenPattern =
   /'(?:[^']*)'|"(?:[^"]*)"|https?:\/\/[^\s"'<>]+|\$[A-Za-z_]\w*|--?[A-Za-z][\w-]*|\b(?:nmap|curl|for|in|do|done|rm|clear|help|hint)\b|\b\d+\b/g;
 
 function tokenClass(token: string) {
-  if (/^['"]/.test(token)) return "syntax-string";
-  if (/^https?:/.test(token)) return "syntax-url";
-  if (token.startsWith("$")) return "syntax-variable";
-  if (/^--?/.test(token)) return "syntax-option";
-  if (/^(for|in|do|done)$/.test(token)) return "syntax-keyword";
-  if (/^(nmap|curl|rm|clear|help|hint)$/.test(token)) return "syntax-command";
-  return "syntax-number";
+  if (/^['"]/.test(token)) return "text-[#a8cc8c]";
+  if (/^https?:/.test(token)) return "text-[#82aaff]";
+  if (token.startsWith("$")) return "text-amber-300";
+  if (/^--?/.test(token)) return "text-orange-300";
+  if (/^(for|in|do|done)$/.test(token)) return "text-purple-300";
+  if (/^(nmap|curl|rm|clear|help|hint)$/.test(token)) return "font-bold text-lime-300";
+  return "text-amber-300";
 }
 
 export function CommandCode({ command }: { command: string }) {
