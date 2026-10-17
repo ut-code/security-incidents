@@ -43,7 +43,7 @@ export function Terminal() {
           </pre>
         ))}
         <form
-          className="mt-auto shrink-0 pt-2 text-lime-300"
+          className="mt-2 shrink-0 pt-2 text-lime-300"
           onSubmit={(event) => {
             event.preventDefault();
             execute();
