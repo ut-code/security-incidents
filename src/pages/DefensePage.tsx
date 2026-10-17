@@ -35,7 +35,7 @@ export function DefensePage() {
   const result = outcome(state);
 
   return (
-    <main className="mx-auto min-h-screen max-w-[1180px] bg-[#07111c] px-4 py-6 text-slate-100 md:px-10">
+    <main className="min-h-screen w-full bg-[#07111c] px-4 py-6 text-slate-100 md:px-10">
       <header className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-700 pb-4">
         <div className="font-mono text-sm font-medium tracking-[0.11em]">
           KOMABA MARKET <span className="ml-3 text-[10px] text-slate-500">SECURITY LAB / 02</span>
