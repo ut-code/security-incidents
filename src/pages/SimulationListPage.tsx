@@ -24,18 +24,7 @@ export function SimulationListPage() {
         ← ホームへ戻る
       </Link>
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center py-5">
-        <div className="font-mono text-[11px] uppercase tracking-[0.11em] text-lime-300">
-          INCIDENT RESPONSE SIMULATION
-        </div>
-        <h1 className="my-4 text-5xl font-black leading-tight tracking-[-0.06em] text-white sm:text-6xl">
-          そのログに、
-          <br />
-          <em>気づけるか。</em>
-        </h1>
-        <p className="m-0 max-w-xl text-sm leading-7 text-slate-300">
-          シミュレーションを選び、攻撃または防御の視点からインシデントを体験します。
-        </p>
-        <div className="mt-4 grid gap-3">
+        <div className="grid gap-3">
           {simulations.map((simulation, index) => (
             <article
               className="rounded border border-slate-700 bg-slate-900/80 p-4 sm:p-5"
