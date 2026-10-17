@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "test": "vitest run",
     "lint": "oxlint src",
+    "typecheck": "tsc -b",
+    "format:check": "oxfmt --check .",
     "format": "oxfmt --write ."
   },
   "dependencies": {
